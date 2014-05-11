@@ -17,7 +17,7 @@ PODS:
   - JDStatusBarNotification (1.4.7)
   - JSMessagesViewController (4.0.2):
     - JSQSystemSoundPlayer
-  - JSQSystemSoundPlayer (1.4.0)
+  - JSQSystemSoundPlayer (1.5.0)
   - MCSwipeTableViewCell (2.1.0)
   - MTLog (0.6.1)
   - NSString+Emoji (0.0.2)
@@ -195,7 +195,7 @@ SPEC CHECKSUMS:
   HMSegmentedControl: 3a58d4fc011e40c93c5299b9e8283e89c32f4c64
   JDStatusBarNotification: 8801f6fcd7e2c2a8b01aaea5a9b049b1cc395491
   JSMessagesViewController: 901c4f7b805e0990705d92eee8069562ac85bf9b
-  JSQSystemSoundPlayer: 28ccd01a92a0cebc6de6361e8499011b4cb6dab7
+  JSQSystemSoundPlayer: 6dbac8dcc33e3add6facb3e59451a0249aece17d
   MCSwipeTableViewCell: 4a26851568843d15340eeca00210c219aa9f76d5
   MTLog: 7a8b3f4ab0fcc457428d85a66b731c6e2ef64bce
   NSString+Emoji: bcd766176b9d1f8c9a304e0796468fcb38fb57e8
@@ -209,4 +209,4 @@ SPEC CHECKSUMS:
   UIKitResources: 5237a3f907b433a70e7f0e7c50c4dc88c080b5f8
   ZAActivityBar: 709b333891ee822d80fda8f641030f586e02735f
 
-COCOAPODS: 0.29.0
+COCOAPODS: 0.32.1
