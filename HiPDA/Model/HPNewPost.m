@@ -425,7 +425,7 @@
     
     NSError *error;
     NSRegularExpression *regex = [NSRegularExpression
-                                  regularExpressionWithPattern:@"<table id=\"pid(\\d+).*?<tr class=\"threadad\">"
+                                  regularExpressionWithPattern:@"<table id=\"pid(\\d+)\"[^>]*>[\\s\\n]*(<tr class=\"threadad\">.*?</tr>)?.*?<tr class=\"threadad\">"
                                   options:NSRegularExpressionDotMatchesLineSeparators
                                   error:&error
                                   ];
