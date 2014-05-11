@@ -393,7 +393,8 @@ typedef NS_ENUM(NSInteger, StoryTransitionType)
             _posts = posts;
             
             // save parameters
-            [self refreshThreadInfo:parameters];
+            [self refreshThreadInfo:parameters
+                           find_pid:_find_pid];
             
             // update title
             [string replaceOccurrencesOfString:@"##title##" withString:_thread.title options:0 range:NSMakeRange(0, string.length)];
@@ -456,7 +457,9 @@ typedef NS_ENUM(NSInteger, StoryTransitionType)
     [self load:YES];
 }
 
-- (void)refreshThreadInfo:(NSDictionary *)parameters {
+- (void)refreshThreadInfo:(NSDictionary *)parameters
+                 find_pid:(NSInteger)find_pid
+{
     
     NSString *formhash = [parameters objectForKey:@"formhash"];
     NSInteger pageCount = [[parameters objectForKey:@"pageCount"] integerValue];
@@ -464,7 +467,6 @@ typedef NS_ENUM(NSInteger, StoryTransitionType)
     NSInteger fid = [[parameters objectForKey:@"fid"] integerValue];
     
     NSInteger page = [[parameters objectForKey:@"current_page"] integerValue];
-    NSInteger find_pid = [[parameters objectForKey:@"find_pid"] integerValue];
     
     
     if (!_thread) {
