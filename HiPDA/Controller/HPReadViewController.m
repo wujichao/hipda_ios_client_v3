@@ -462,9 +462,10 @@ typedef NS_ENUM(NSInteger, StoryTransitionType)
                     list = [NSString stringWithFormat:@"<li class=\"%@\" data-id=\"floor://%ld\" ><a name=\"floor_%ld\"></a><div class=\"info\"><span class=\"author\" style=\"left: 0;\">%@</span><span class=\"floor\">%ld#</span><span class=\"time-ago\">%@</span></div><div class=\"content%@\">%@</div></li>", liClass, post.floor, post.floor, post.user.username, post.floor, [HPNewPost dateString:post.date], isBlocked?@" blocked":@"", isBlocked?@"- <i>blocked</i> - ":post.body_html];
                 }
                 
+                [lists appendString:@"<hr>"];
                 [lists appendString:list];
             }];
-            
+            [lists appendString:@"<hr>"];
             
             [string replaceOccurrencesOfString:@"<span style=\"display:none\">##lists##</span>" withString:lists options:0 range:NSMakeRange(0, string.length)];
             
