@@ -103,6 +103,11 @@
         [Setting saveObject:fids forKey:HPSettingFavForums];
         [Setting saveObject:fids_title forKey:HPSettingFavForumsTitle];
     } skipBlock:nil];
+    
+    [HPOnceRunService onceName:@"updateDomain" runBlcok:^{
+        [self saveObject:@"www.4d4y.com" forKey:HPSettingBaseURL];
+    } skipBlock:nil];
+    
     if (DEBUG_SETTING) NSLog(@"load  _globalSettings %@", _globalSettings);
 }
 

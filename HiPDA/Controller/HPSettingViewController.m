@@ -230,6 +230,23 @@
         [Flurry logEvent:@"Setting SetTail" withParameters:@{@"text":item.value}];
     };
     
+    // 域名
+    //
+    RETextItem *domainSettingText = [RETextItem itemWithTitle:@"域名" value:HP_BASE_HOST placeholder:HP_WWW_BASE_HOST];
+    
+    domainSettingText.returnKeyType = UIReturnKeyDone;
+    domainSettingText.onEndEditing = ^(RETextItem *item) {
+        NSLog(@"domainSettingText _%@_", item.value);
+        if (item.value.length > 0) {
+            [Setting saveObject:item.value forKey:HPSettingBaseURL];
+            [SVProgressHUD showSuccessWithStatus:@"已保存, 重启app后生效"];
+        } else {
+            [SVProgressHUD showErrorWithStatus:@"域名不能为空"];
+        }
+        
+        [Flurry logEvent:@"Setting domainSettingText" withParameters:@{@"text":item.value}];
+    };
+    
     //
     //
     RETableViewItem *setForumItem = [RETableViewItem itemWithTitle:@"板块设定" accessoryType:UITableViewCellAccessoryDisclosureIndicator selectionHandler:^(RETableViewItem *item) {
@@ -356,6 +373,7 @@
     [section addItem:isNightModeItem];
     [section addItem:isShowAvatarItem];
     [section addItem:postTailText];
+    [section addItem:domainSettingText];
     [section addItem:setForumItem];
     [section addItem:blockListItem];
     [section addItem:blockThreadListItem];

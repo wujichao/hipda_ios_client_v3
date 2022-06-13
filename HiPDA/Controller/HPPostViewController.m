@@ -856,8 +856,8 @@ HPStupidBarDelegate
     
     if (navigationAction.navigationType == WKNavigationTypeLinkActivated) {
         policy = WKNavigationActionPolicyCancel;
-        
-        RxMatch *match = [urlString firstMatchWithDetails:RX(@"hi-pda\\.com/forum/viewthread\\.php\\?tid=(\\d+)")];
+        // NEW_DOMAIN
+        RxMatch *match = [urlString firstMatchWithDetails:RX(@"/forum/viewthread\\.php\\?tid=(\\d+)")];
         if (match) {
             RxMatchGroup *m1 = [match.groups objectAtIndex:1];
             

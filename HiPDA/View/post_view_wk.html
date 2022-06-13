@@ -111,12 +111,12 @@
     }
     
     .content img[src^='images'],
-    .content img[src*='hi-pda.com/forum/images'],
-    .content img[src*='hi-pda.com/forum/images'],
-    .content img[src*='hi-pda.com/forum/images'],
-    .content img[src*='hi-pda.com/forum/attachments/day_140621/1406211752793e731a4fec8f7b.png'],
-    .content img[src*='hi-pda.com/forum/attachments/day_140621/1406211752793e731a4fec8f7b.png'],
-    .content img[src*='hi-pda.com/forum/attachments/day_140621/1406211752793e731a4fec8f7b.png'] {
+    .content img[src*='/forum/images'],
+    .content img[src*='/forum/images'],
+    .content img[src*='/forum/images'],
+    .content img[src*='/forum/attachments/day_140621/1406211752793e731a4fec8f7b.png'],
+    .content img[src*='/forum/attachments/day_140621/1406211752793e731a4fec8f7b.png'],
+    .content img[src*='/forum/attachments/day_140621/1406211752793e731a4fec8f7b.png'] {
         border: 0 !important;
         outline: 0 !important;
         margin: 0 !important;
@@ -404,7 +404,7 @@ function getPosition2(el) {
 var images = document.getElementsByTagName('IMG');
 for (var i in images) {
     var image = images[i];
-    if (image && image.src && image.src.indexOf("hi-pda.com/forum/uc_server/data/avatar/") === 0) {
+    if (image && image.src && image.src.indexOf("/forum/uc_server/data/avatar/") === 0) {
         continue;
     }
     warpImageNode(image);

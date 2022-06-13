@@ -313,8 +313,8 @@
 
 - (void)processContentHTML {
     
-    // 回复
-    _body_html = [RX(@"<a href=\"https?://\\w{3}\\.hi-pda\\.com/forum/redirect\\.php\\?goto=findpost&amp;pid=(\\d+)&amp;ptid=\\d+\" target=\"_blank\">(\\d+)#</a>") replace:_body_html withDetailsBlock:^NSString *(RxMatch *match) {
+    // 回复 NEW_DOMAIN
+    _body_html = [RX(@"<a href=\"https?://.*?/forum/redirect\\.php\\?goto=findpost&amp;pid=(\\d+)&amp;ptid=\\d+\" target=\"_blank\">(\\d+)#</a>") replace:_body_html withDetailsBlock:^NSString *(RxMatch *match) {
         
         RxMatchGroup *m1 = [match.groups objectAtIndex:1];
         RxMatchGroup *m2 = [match.groups objectAtIndex:2];
@@ -324,8 +324,8 @@
         return [NSString stringWithFormat:@"<a onclick='gotofloor(\"%ld_%ld\")' >%ld#</a>", [m2.value integerValue], [m1.value integerValue], [m2.value integerValue]];
     }];
     
-    // 引用
-    _body_html = [RX(@"<a href=\"https?://\\w{3}\\.hi-pda\\.com/forum/redirect\\.php\\?goto=findpost&amp;pid=(\\d+)&amp;ptid=\\d+\" target=\"_blank\">") replace:_body_html withDetailsBlock:^NSString *(RxMatch *match) {
+    // 引用 NEW_DOMAIN
+    _body_html = [RX(@"<a href=\"https?://.*?/forum/redirect\\.php\\?goto=findpost&amp;pid=(\\d+)&amp;ptid=\\d+\" target=\"_blank\">") replace:_body_html withDetailsBlock:^NSString *(RxMatch *match) {
         
         RxMatchGroup *m1 = [match.groups objectAtIndex:1];
         return [NSString stringWithFormat:@"<a onclick='gotofloor(\"0_%ld\")' >", [m1.value integerValue]];
@@ -550,8 +550,8 @@
     }
     
     if (debugContent) NSLog(@"content %@", self.body_html);
-    
-    _body_html = [RX(@"<a href=\"https?://\\w{3}\\.hi-pda\\.com/forum/redirect\\.php\\?goto=findpost&amp;pid=(\\d+)&amp;ptid=\\d+\" target=\"_blank\">(\\d+)#</a>") replace:_body_html withDetailsBlock:^NSString *(RxMatch *match) {
+    // NEW_DOMAIN
+    _body_html = [RX(@"<a href=\"https?://.*?/forum/redirect\\.php\\?goto=findpost&amp;pid=(\\d+)&amp;ptid=\\d+\" target=\"_blank\">(\\d+)#</a>") replace:_body_html withDetailsBlock:^NSString *(RxMatch *match) {
         
         RxMatchGroup *m1 = [match.groups objectAtIndex:1];
         RxMatchGroup *m2 = [match.groups objectAtIndex:2];
@@ -560,8 +560,8 @@
         
         return [NSString stringWithFormat:@"<a onclick='gotofloor(\"%ld_%ld\")' >%ld#</a>", [m2.value integerValue], [m1.value integerValue], [m2.value integerValue]];
     }];
-    
-    _body_html = [RX(@"<a href=\"https?://\\w{3}\\.hi-pda\\.com/forum/redirect\\.php\\?goto=findpost&amp;pid=(\\d+)&amp;ptid=\\d+\" target=\"_blank\">") replace:_body_html withDetailsBlock:^NSString *(RxMatch *match) {
+    // NEW_DOMAIN
+    _body_html = [RX(@"<a href=\"https?://.*?/forum/redirect\\.php\\?goto=findpost&amp;pid=(\\d+)&amp;ptid=\\d+\" target=\"_blank\">") replace:_body_html withDetailsBlock:^NSString *(RxMatch *match) {
         
         RxMatchGroup *m1 = [match.groups objectAtIndex:1];
         

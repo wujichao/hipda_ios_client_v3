@@ -21,6 +21,12 @@
 {
     [super viewDidLoad];
     [self fuckPopGestureRecognizer];
+    
+    if (@available(iOS 15.0, *)) {
+        UINavigationBarAppearance *barApp = [[UINavigationBarAppearance alloc] init];
+        barApp.backgroundEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleRegular];
+        self.navigationBar.scrollEdgeAppearance = barApp;
+    }
 }
 
 //https://github.com/zys456465111/CustomPopAnimation/

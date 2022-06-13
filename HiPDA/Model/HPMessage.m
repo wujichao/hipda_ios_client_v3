@@ -204,7 +204,8 @@
                 // message
                 if ([summary indexOf:@"images/smilies"] != -1) {
                     // <img src=\"http://www.hi-pda.com/forum/images/smilies/grapeman/19.gif\" border=\"0\" alt=\"\" />
-                    summary = [summary replaceWithPattern:@"<img[^>]+src=\"https?://\\w{3}\\.hi-pda\\.com/forum/images/smilies/([a-z0-9/]+)\\.gif.*?>" template:@"{表情($1)}" isdot:NO];
+                    // NEW_DOMAIN
+                    summary = [summary replaceWithPattern:@"<img[^>]+src=\"https?://.*?/forum/images/smilies/([a-z0-9/]+)\\.gif.*?>" template:@"{表情($1)}" isdot:NO];
                 }
                 //summary = [summary stringByReplacingOccurrencesOfString:@"<br />" withString:@"\n"];
                 //<a href="http://www.hi-pda.com/forum/pm.php?uid=682029&amp;filter=privatepm&amp;daterange=5#new" target="_blank">http://www.hi-pda.com/forum/pm.p ... amp;daterange=5#new</a>

@@ -17,6 +17,7 @@
 #import "HPRearViewController.h"
 #import "HPSubViewController.h"
 #import "HPUserViewController.h"
+#import "HPSetting.h"
 
 @implementation HPRouter
 
@@ -67,7 +68,9 @@
     
     
     // match
-    NSString *tid = [RX(@"hi-pda\\.com/forum/viewthread\\.php\\?tid=(\\d+)") firstMatchValue:content];
+    // NEW_DOMAIN
+    NSString *pattern = [NSString stringWithFormat:@"%@/forum/viewthread\\.php\\?tid=(\\d+)", HP_BASE_HOST];
+    NSString *tid = [RX(pattern) firstMatchValue:content];
     if (tid) {
         
         NSString *key = [@"tid_" stringByAppendingString:tid];

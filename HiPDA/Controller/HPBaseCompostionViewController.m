@@ -271,6 +271,8 @@
 {
     NSLog(@"textViewDidBeginEditing");
     if ([_contentTextFiled.text isEqualToString:@"content here..."]) {
+        //以下两行代码用来绕过iOS15上粘贴时的闪退问题
+        textView.text = @" ";
         textView.text = @"";
         
         // dark
