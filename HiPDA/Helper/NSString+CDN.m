@@ -7,6 +7,7 @@
 //
 
 #import "NSString+CDN.h"
+#import "HPSetting.h"
 
 @implementation NSString (CDN)
 

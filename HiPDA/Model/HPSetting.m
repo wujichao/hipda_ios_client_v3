@@ -43,6 +43,12 @@
     return [NSString stringWithFormat:@"%@_for_%@", HPSettingDic, username];
 }
 
++ (NSString *)keyForOnce:(NSString *)key
+{
+    NSString *username = [NSStandardUserDefaults stringForKey:kHPAccountUserName or:@""];
+    return [NSString stringWithFormat:@"%@_for_%@", key, username];
+}
+
 - (void)loadSetting {
     
     //_globalSettings = [NSStandardUserDefaults objectForKey:HPSettingDic];
@@ -104,7 +110,7 @@
         [Setting saveObject:fids_title forKey:HPSettingFavForumsTitle];
     } skipBlock:nil];
     
-    [HPOnceRunService onceName:@"updateDomain" runBlcok:^{
+    [HPOnceRunService onceName:[self.class keyForOnce:@"updateDomain"] runBlcok:^{
         [self saveObject:@"www.4d4y.com" forKey:HPSettingBaseURL];
     } skipBlock:nil];
     

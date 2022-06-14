@@ -11,6 +11,7 @@
 #import "SDImageCache+URLCache.h"
 #import "NSString+CDN.h"
 #import "SVProgressHUD.h"
+#import "HPSetting.h"
 
 // Private
 @interface IDMPhoto () {

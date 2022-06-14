@@ -133,10 +133,8 @@
 #define HP_BASE_HOST ([Setting objectForKey:HPSettingBaseURL])
 #define HP_URL_FORMAT ([Setting boolForKey:HPSettingEnableHTTPS] ? @"https://%@" : @"http://%@")
 #define HP_BASE_URL ([NSString stringWithFormat:HP_URL_FORMAT, HP_BASE_HOST])
-#define HP_WWW_BASE_HOST @"www.hi-pda.com"
-#define HP_CNC_BASE_HOST @"cnc.hi-pda.com"
-#define HP_DEV_BASE_HOST @"dev.hi-pda.com"
-#define HP_IMG_BASE_HOST @"img02.hi-pda.com"
+#define HP_WWW_BASE_HOST @"www.4d4y.com"
+#define HP_IMG_BASE_HOST ([HP_BASE_HOST stringByReplacingOccurrencesOfString:@"www." withString:@"img02."])
 #define HP_IMG_BASE_URL ([NSString stringWithFormat:HP_URL_FORMAT, HP_IMG_BASE_HOST])
 #define HP_CDN_BASE_HOST @"7xq2vp.com1.z0.glb.clouddn.com"
 #define HP_CDN_URL_SUFFIX (@"-w600")
