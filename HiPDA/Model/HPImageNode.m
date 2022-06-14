@@ -12,6 +12,7 @@
 
 @interface HPImageNode()
 
+@property (nonatomic, strong) NSString *prefix;
 @property (nonatomic, strong) NSString *id;
 @property (nonatomic, strong) NSString *extension;
 @property (nonatomic, strong) NSString *url;
@@ -29,6 +30,8 @@
         
         NSRange r1 = [url rangeOfString:@"attachments/"];
         if (r1.location != NSNotFound) {
+            _prefix = [url substringWithRange:NSMakeRange(0, r1.location)];
+            
             NSUInteger s = r1.location + r1.length;
             NSRange r2 = [url rangeOfString:@"." options:0 range:NSMakeRange(s, url.length - s)];
             NSParameterAssert(r2.location != NSNotFound);
@@ -76,7 +79,7 @@
 
 - (NSString *)hp_URL
 {
-    NSString *s = [NSString stringWithFormat:@"%@/forum/attachments/%@.%@", HP_IMG_BASE_URL, self.id, self.extension];
+    NSString *s = [NSString stringWithFormat:@"%@attachments/%@.%@", self.prefix, self.id, self.extension];
     return s;
 }
 
