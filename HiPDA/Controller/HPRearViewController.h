@@ -21,6 +21,7 @@
 + (void)threadVCRefresh;
 
 - (void)themeDidChanged;
+- (void)themeUpdate;
 
 - (void)switchToThreadVC;
 - (void)switchToMessageVC;

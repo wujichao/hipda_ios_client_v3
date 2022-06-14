@@ -85,21 +85,9 @@
     //
     [HPDatabase prepareDb];
     
-    // dark
-    if ([Setting boolForKey:HPSettingNightMode]) {
-        [[UINavigationBar appearance] setBarStyle:UIBarStyleBlack];
-        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    } else {
-        // TODO: 兼容 dark mode, 这里要改
-        if (@available(iOS 13.0, *)) {
-            [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDarkContent];
-        } else {
-            [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
-        }
-    }
-    
     //
     _rearViewController = [HPRearViewController sharedRearVC];
+    [_rearViewController themeUpdate];
     UINavigationController *frontNavigationController = [HPRearViewController threadNavViewController];
     
 	SWRevealViewController *revealController = [[SWRevealViewController alloc] initWithRearViewController:_rearViewController frontViewController:frontNavigationController];

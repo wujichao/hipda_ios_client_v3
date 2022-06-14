@@ -572,16 +572,39 @@
             [vc performSelector:@selector(themeDidChanged) withObject:nil];
     }
     
+    [self themeUpdate];
+}
+
+- (void)themeUpdate
+{
+    // 夜间
     if ([Setting boolForKey:HPSettingNightMode]) {
         [[UINavigationBar appearance] setBarStyle:UIBarStyleBlack];
         [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    } else {
+        
+        if (@available(iOS 15.0, *)) {
+            UINavigationBarAppearance *barApp = [[UINavigationBarAppearance alloc] init];
+            barApp.backgroundEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+            _threadNavViewController.navigationBar.scrollEdgeAppearance = barApp;
+            _threadNavViewController.navigationBar.standardAppearance = barApp;
+        }
+        
+    }
+    // 日间
+    else {
         // TODO: 兼容 dark mode, 这里要改
         [[UINavigationBar appearance] setBarStyle:UIBarStyleDefault];
         if (@available(iOS 13.0, *)) {
             [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDarkContent];
         } else {
             [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+        }
+        
+        if (@available(iOS 15.0, *)) {
+            UINavigationBarAppearance *barApp = [[UINavigationBarAppearance alloc] init];
+            barApp.backgroundEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleRegular];
+            _threadNavViewController.navigationBar.scrollEdgeAppearance = barApp;
+            _threadNavViewController.navigationBar.standardAppearance = [[UINavigationController new] navigationBar].standardAppearance;
         }
     }
     
