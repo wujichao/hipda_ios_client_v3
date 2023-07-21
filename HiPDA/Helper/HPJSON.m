@@ -17,7 +17,6 @@
     NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectData
                                                          options:NSJSONReadingMutableContainers
                                                            error:&jsonError];
-    assert(!jsonError);
     if (jsonError) {
         DDLogError(@"fromJSON error: %@, %@", jsonString, jsonError);
         return nil;
@@ -33,7 +32,6 @@
                                                        options:0
                                                          error:&error];
     
-    assert(!error);
     if (error) {
         DDLogError(@"toJSON error: %@, %@", dic, error);
         return nil;
@@ -57,7 +55,6 @@
     id object = [MTLJSONAdapter modelOfClass:clazz
                           fromJSONDictionary:json
                                        error:&jsonError];
-    assert(!jsonError);
     if (jsonError) {
         DDLogError(@"加载失败 %@", json);
         return nil;
